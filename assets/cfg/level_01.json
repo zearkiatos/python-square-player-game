@@ -1,0 +1,106 @@
+[
+    {
+        "enemy_type": "Goblin",
+        "time": 0,
+        "position": {
+            "x": 100,
+            "y": 200
+        }
+    },
+    {
+        "enemy_type": "Orc",
+        "time": 5,
+        "position": {
+            "x": 300,
+            "y": 400
+        }
+    },
+    {
+        "enemy_type": "Troll",
+        "time": 10,
+        "position": {
+            "x": 500,
+            "y": 600
+        }
+    },
+    {
+        "enemy_type": "Goblin",
+        "time": 15,
+        "position": {
+            "x": 70,
+            "y": 80
+        }
+    },
+    {
+        "enemy_type": "Orc",
+        "time": 20,
+        "position": {
+            "x": 90,
+            "y": 100
+        }
+    },
+    {
+        "enemy_type": "Troll",
+        "time": 25,
+        "position": {
+            "x": 100,
+            "y": 200
+        }
+    },
+    {
+        "enemy_type": "Goblin",
+        "time": 30,
+        "position": {
+            "x": 300,
+            "y": 400
+        }
+    },
+    {
+        "enemy_type": "Orc",
+        "time": 35,
+        "position": {
+            "x": 500,
+            "y": 600
+        }
+    },
+    {
+        "enemy_type": "Troll",
+        "time": 40,
+        "position": {
+            "x": 70,
+            "y": 80
+        }
+    },
+    {
+        "enemy_type": "Dragon",
+        "time": 45,
+        "position": {
+            "x": 90,
+            "y": 100
+        }
+    },
+    {
+        "enemy_type": "Goblin",
+        "time": 50,
+        "position": {
+            "x": 100,
+            "y": 200
+        }
+    },
+    {
+        "enemy_type": "Orc",
+        "time": 55,
+        "position": {
+            "x": 300,
+            "y": 400
+        }
+    },
+    {
+        "enemy_type": "Troll",
+        "time": 60,
+        "position": {
+            "x": 500,
+            "y": 600
+        }
+    }
+]
