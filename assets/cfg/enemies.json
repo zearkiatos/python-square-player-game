@@ -1,66 +1,55 @@
-[
-    {
-        "name": "Goblin",
+{
+    "TypeA": {
         "size": {
-            "width": 10,
-            "height": 50
+            "x": 40,
+            "y": 40
         },
         "color": {
-            "red": 0,
-            "green": 255,
-            "blue": 0
+            "r": 100,
+            "g": 100,
+            "b": 255
         },
-        "speed": {
-            "minimum": 100,
-            "maximum": 100
-        }
+        "velocity_min": 25,
+        "velocity_max": 50
     },
-    {
-        "name": "Orc",
+    "TypeB": {
         "size": {
-            "width": 60,
-            "height": 20
+            "x": 50,
+            "y": 50
         },
         "color": {
-            "red": 255,
-            "green": 0,
-            "blue": 0
+            "r": 255,
+            "g": 100,
+            "b": 100
         },
-        "speed": {
-            "minimum": 200,
-            "maximum": 200
-        }
+        "velocity_min": 20,
+        "velocity_max": 40
     },
-    {
-        "name": "Troll",
+    "TypeC": {
         "size": {
-            "width": 30,
-            "height": 70
+            "x": 25,
+            "y": 25
         },
         "color": {
-            "red": 0,
-            "green": 0,
-            "blue": 255
+            "r": 255,
+            "g": 255,
+            "b": 100
         },
-        "speed": {
-            "minimum": 300,
-            "maximum": 300
-        }
+        "velocity_min": 10,
+        "velocity_max": 75
     },
-    {
-        "name": "Dragon",
+    "TypeD": {
         "size": {
-            "width": 100,
-            "height": 100
+            "x": 25,
+            "y": 40
         },
         "color": {
-            "red": 255,
-            "green": 255,
-            "blue": 0
+            "r": 100,
+            "g": 100,
+            "b": 100
         },
-        "speed": {
-            "minimum": 400,
-            "maximum": 400
-        }
+        "velocity_min": 100,
+        "velocity_max": 125
     }
-]
+
+}
