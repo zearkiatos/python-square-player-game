@@ -14,16 +14,16 @@
     },
     "TypeB": {
         "size": {
-            "x": 50,
-            "y": 50
+            "x": 40,
+            "y": 25
         },
         "color": {
             "r": 255,
             "g": 100,
-            "b": 100
+            "b": 255
         },
-        "velocity_min": 20,
-        "velocity_max": 40
+        "velocity_min": 50,
+        "velocity_max": 75
     },
     "TypeC": {
         "size": {
@@ -35,8 +35,8 @@
             "g": 255,
             "b": 100
         },
-        "velocity_min": 10,
-        "velocity_max": 75
+        "velocity_min": 75,
+        "velocity_max": 100
     },
     "TypeD": {
         "size": {
@@ -51,5 +51,4 @@
         "velocity_min": 100,
         "velocity_max": 125
     }
-
 }

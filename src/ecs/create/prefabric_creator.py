@@ -16,6 +16,8 @@ def create_square(world: esper.World, size: pygame.Vector2, position: pygame.Vec
         square_entity, CTransform(position))
     world.add_component(
         square_entity, CVelocity(velocity))
+    
+    return square_entity
 
 
 def create_enemy_square(world: esper.World, position: pygame.Vector2, enemy_info: dict):
@@ -23,13 +25,21 @@ def create_enemy_square(world: esper.World, position: pygame.Vector2, enemy_info
     red, green, blue = tuple(enemy_info["color"].values())
     size = pygame.Vector2(width, height)
     color = pygame.Color(red, green, blue)
-    max_velocity = enemy_info["velocity_max"]
-    min_velocity = enemy_info["velocity_min"]
-    velocity_range = random.randrange(min_velocity, max_velocity)
-    velocity = pygame.Vector2(random.choice(
-        [-velocity_range, velocity_range]), random.choice([-velocity_range, velocity_range]))
-    create_square(world, size, position, velocity, color)
+    velocity_max = enemy_info["velocity_max"]
+    velocity_min = enemy_info["velocity_min"]
+    velocity = pygame.Vector2(0, 0)
+    while velocity.x == 0 and velocity.y == 0:
+        velocity_range = random.randrange(velocity_min, velocity_max)
+        velocity = pygame.Vector2(
+            random.choice([-velocity_range, velocity_range]),
+            random.choice([-velocity_range, velocity_range])
+        )
+    
+    enemy_entity = create_square(world, size, position, velocity, color)
+    return enemy_entity
+
 
 def create_enemy_spawner(world: esper.World, level_data: dict):
     spawner_entity = world.create_entity()
-    world.add_component(spawner_entity, CEnemySpawner(level_data['enemy_spawn_events']))
+    world.add_component(spawner_entity, CEnemySpawner(
+        level_data['enemy_spawn_events']))
