@@ -1,6 +1,6 @@
 import pygame
 import esper
-from src.ecs.create.prefabric_creator import create_enemy_spawner
+from src.ecs.create.prefabric_creator import create_enemy_spawner, create_player_square
 from src.ecs.systems.s_movement import system_movement
 from src.ecs.systems.s_rendering import system_rendering
 from src.ecs.systems.s_screen_bounce import system_screen_bounce
@@ -35,6 +35,7 @@ class GameEngine:
         self._clean()
 
     def _create(self):
+        create_player_square(self.ecs_world, self.player_config, self.levels_config["player_spawn"])
         create_enemy_spawner(self.ecs_world, self.levels_config)
 
     def _calculate_time(self):
@@ -63,3 +64,4 @@ class GameEngine:
         self.window_config = read_json_file("assets/cfg/window.json")
         self.enemies_config = read_json_file("assets/cfg/enemies.json")
         self.levels_config = read_json_file("assets/cfg/level_01.json")
+        self.player_config = read_json_file("assets/cfg/player.json")
