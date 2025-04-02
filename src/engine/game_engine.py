@@ -20,9 +20,7 @@ class GameEngine:
         self.is_running = False
         self.framerate = self.window_config["window"]["framerate"]
         self.delta_time = 0
-        self.time = 0
         self.bg_color = pygame.Color(background_color)
-        self.start_time = pygame.time.get_ticks()
 
         self.ecs_world = esper.World()
 
@@ -49,13 +47,12 @@ class GameEngine:
                 self.is_running = False
 
     def _update(self):
+        system_enemy_spawner(self.ecs_world, self.enemies_config, self.delta_time)
         system_movement(self.ecs_world, self.delta_time)
         system_screen_bounce(self.ecs_world, self.screen)
-        system_enemy_spawner(self.ecs_world, self.enemies_config, self.delta_time)
 
     def _draw(self):
         self.screen.fill(self.bg_color)
-
         system_rendering(self.ecs_world, self.screen)
         pygame.display.flip()
 
