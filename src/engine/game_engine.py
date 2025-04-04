@@ -1,6 +1,6 @@
 import pygame
 import esper
-from src.ecs.components.c_input_command import CInputCommand
+from src.ecs.components.c_input_command import CInputCommand, CommandPhase
 from src.ecs.create.prefabric_creator import create_enemy_spawner, create_input_player, create_player_square
 from src.ecs.systems.s_input_player import system_input_player
 from src.ecs.systems.s_movement import system_movement
@@ -74,3 +74,26 @@ class GameEngine:
 
     def _do_action(self, c_input: CInputCommand):
         print(f"{c_input.name} {c_input.phase}")
+        if c_input.name == "PLAYER_LEFT":
+            if (c_input.phase == CommandPhase.START):
+                self._player_component_velocity.velocity.x -= self.player_config["input_velocity"]
+            elif c_input.phase == CommandPhase.END:
+                self._player_component_velocity.velocity.x += self.player_config["input_velocity"]
+        
+        if c_input.name == "PLAYER_RIGHT":
+            if (c_input.phase == CommandPhase.START):
+                self._player_component_velocity.velocity.x += self.player_config["input_velocity"]
+            elif c_input.phase == CommandPhase.END:
+                self._player_component_velocity.velocity.x -= self.player_config["input_velocity"]
+        
+        if c_input.name == "PLAYER_UP":
+            if (c_input.phase == CommandPhase.START):
+                self._player_component_velocity.velocity.y -= self.player_config["input_velocity"]
+            elif c_input.phase == CommandPhase.END:
+                self._player_component_velocity.velocity.y += self.player_config["input_velocity"]
+
+        if c_input.name == "PLAYER_DOWN":
+            if (c_input.phase == CommandPhase.START):
+                self._player_component_velocity.velocity.y += self.player_config["input_velocity"]
+            elif c_input.phase == CommandPhase.END:
+                self._player_component_velocity.velocity.y -= self.player_config["input_velocity"]
