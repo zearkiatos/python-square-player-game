@@ -6,9 +6,11 @@ from src.ecs.components.c_surface import CSurface
 from src.ecs.components.c_transform import CTransform
 from src.ecs.components.c_velocity import CVelocity
 from src.ecs.components.c_enemy_spawner import CEnemySpawner
+from src.ecs.components.tags.c_tag_enemy import CTagEnemy
+from src.ecs.components.tags.c_tag_player import CTagPlayer
 
 
-def create_square(world: esper.World, size: pygame.Vector2, position: pygame.Vector2, velocity: pygame.Vector2, color: pygame.Color):
+def create_square(world: esper.World, size: pygame.Vector2, position: pygame.Vector2, velocity: pygame.Vector2, color: pygame.Color) -> int:
     square_entity = world.create_entity()
     world.add_component(square_entity, CSurface(
         size, color))
@@ -36,6 +38,7 @@ def create_enemy_square(world: esper.World, position: pygame.Vector2, enemy_info
         )
 
     enemy_entity = create_square(world, size, position, velocity, color)
+    world.add_component(enemy_entity, CTagEnemy)
     return enemy_entity
 
 
@@ -45,11 +48,13 @@ def create_enemy_spawner(world: esper.World, level_data: dict):
         level_data['enemy_spawn_events']))
 
 
-def create_player_square(world: esper.World, player_info: dict, player_level_info: dict):
+def create_player_square(world: esper.World, player_info: dict, player_level_info: dict) -> int:
     size = pygame.Vector2(tuple(player_info["size"].values()))
     color = pygame.Color(tuple(player_info["color"].values()))
     x, y = tuple(player_level_info["position"].values())
     position = pygame.Vector2(x - (size.x/2), y - (size.y/2))
     velocity = pygame.Vector2(0, 0)
 
-    create_square(world, size, position, velocity, color)
+    player_entity = create_square(world, size, position, velocity, color)
+    world.add_component(player_entity, CTagPlayer)
+    return player_entity
