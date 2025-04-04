@@ -2,6 +2,7 @@ import pygame
 import esper
 from src.ecs.components.c_input_command import CInputCommand, CommandPhase
 from src.ecs.create.prefabric_creator import create_enemy_spawner, create_input_player, create_player_square
+from src.ecs.systems.s_collision_player_enemy import system_collision_player_enemy
 from src.ecs.systems.s_input_player import system_input_player
 from src.ecs.systems.s_movement import system_movement
 from src.ecs.systems.s_rendering import system_rendering
@@ -57,6 +58,8 @@ class GameEngine:
         system_movement(self.ecs_world, self.delta_time)
         system_screen_bounce(self.ecs_world, self.screen)
         system_enemy_spawner(self.ecs_world, self.enemies_config, self.delta_time)
+        system_collision_player_enemy(self.ecs_world, self._player_entity, self.levels_config)
+        self.ecs_world._clear_dead_entities()
 
     def _draw(self):
         self.screen.fill(self.bg_color)
@@ -64,6 +67,7 @@ class GameEngine:
         pygame.display.flip()
 
     def _clean(self):
+        self.ecs_world.clear_database()
         pygame.quit()
     
     def _load_config_files(self):
@@ -73,7 +77,6 @@ class GameEngine:
         self.player_config = read_json_file("assets/cfg/player.json")
 
     def _do_action(self, c_input: CInputCommand):
-        print(f"{c_input.name} {c_input.phase}")
         if c_input.name == "PLAYER_LEFT":
             if (c_input.phase == CommandPhase.START):
                 self._player_component_velocity.velocity.x -= self.player_config["input_velocity"]
